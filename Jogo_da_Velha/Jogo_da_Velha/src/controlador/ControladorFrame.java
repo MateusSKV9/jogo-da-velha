@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import visual.Frame; 
 import visual.PaneljogoVelha;
 
-public class ControladorFrame implements ActionListener{
+public class ControladorFrame implements ActionListener {
 	Frame frame;
 	PaneljogoVelha paneljogoVelha; 
 	ControladorjogoVelha controladorjogoVelha; 
@@ -13,8 +13,6 @@ public class ControladorFrame implements ActionListener{
 	public ControladorFrame() {
 		frame = new Frame();
 		paneljogoVelha = new PaneljogoVelha();
-		paneljogoVelha.getTextFielJogador2().setBounds(40, 119, 200, 40);
-		paneljogoVelha.getTextFielJogador1().setBounds(40, 43, 200, 40);
 		paneljogoVelha.getBtn9().setBounds(362, 271, 81, 40);
 		paneljogoVelha.getBtn8().setBounds(271, 271, 81, 40);
 		paneljogoVelha.getBtn7().setBounds(180, 271, 81, 40);

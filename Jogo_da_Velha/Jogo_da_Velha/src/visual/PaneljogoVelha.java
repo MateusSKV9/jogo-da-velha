@@ -13,15 +13,14 @@ public class PaneljogoVelha extends JPanel {
 	JButton btn7;
 	JButton btn8;
 	JButton btn9;
-	
-	JTextField jogador1;
-	JTextField jogador2;
 	JLabel jogadorAtual;
+	private JLabel lblVez;
+	private JLabel lblResultado;
 	
 	
 	public PaneljogoVelha() {
 		this.setLayout(null);
-		this.setSize(1000, 700);
+		this.setSize(620, 600);
 		
 		this.add(getBtn1());
 		this.add(getBtn2());
@@ -32,23 +31,17 @@ public class PaneljogoVelha extends JPanel {
 		this.add(getBtn7());
 		this.add(getBtn8());
 		this.add(getBtn9());
-		this.add(getTextFielJogador1());
-		this.add(getTextFielJogador2());
-		
-		JLabel lblNewLabel = new JLabel("Nome Jogador 1: ");
-		lblNewLabel.setBounds(41, 24, 199, 14);
-		add(lblNewLabel);
-		
-		JLabel lblNomeJogador = new JLabel("Nome Jogador 2: ");
-		lblNomeJogador.setBounds(40, 94, 199, 14);
-		add(lblNomeJogador);
+		add(getLblVez());
+		add(getLblResultado());
 	}
 
 	public JButton getBtn1() {
 		if(btn1 == null) {
 			btn1 = new JButton();
-			btn1.setSize(81, 40);
-			btn1.setLocation(10, 198);
+			btn1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn1.setText("1");
+			btn1.setSize(100, 100);
+			btn1.setLocation(130, 202);
 			//btn1.setText("1");
 
 		}
@@ -59,8 +52,10 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn2() {
 		if(btn2 == null) {
 			btn2 = new JButton();
-			btn2.setSize(81, 40);
-			btn2.setLocation(102, 197);
+			btn2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn2.setText("2");
+			btn2.setSize(100, 100);
+			btn2.setLocation(240, 202);
 			//btn2.setText("2");
 
 		}
@@ -71,8 +66,10 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn3() {
 		if(btn3 == null) {
 			btn3 = new JButton();
-			btn3.setSize(81, 40);
-			btn3.setLocation(193, 197);
+			btn3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn3.setText("3");
+			btn3.setSize(100, 100);
+			btn3.setLocation(350, 202);
 			//btn3.setText("3");
 
 		}
@@ -84,8 +81,10 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn4() {
 		if(btn4 == null) {
 			btn4 = new JButton();
-			btn4.setSize(81, 40);
-			btn4.setLocation(11, 248);
+			btn4.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn4.setText("4");
+			btn4.setSize(100, 100);
+			btn4.setLocation(130, 312);
 			//btn4.setText("4");
 
 		}
@@ -96,8 +95,10 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn5() {
 		if(btn5 == null) {
 			btn5 = new JButton();
-			btn5.setSize(81, 40);
-			btn5.setLocation(102, 248);
+			btn5.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn5.setText("5");
+			btn5.setSize(100, 100);
+			btn5.setLocation(240, 312);
 			//btn5.setText("5");
 
 		}
@@ -108,8 +109,10 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn6() {
 		if(btn6 == null) {
 			btn6 = new JButton();
-			btn6.setSize(81, 40);
-			btn6.setLocation(193, 248);
+			btn6.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn6.setText("6");
+			btn6.setSize(100, 100);
+			btn6.setLocation(350, 312);
 			//btn6.setText("6");
 
 		}
@@ -120,8 +123,10 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn7() {
 		if(btn7 == null) {
 			btn7 = new JButton();
-			btn7.setSize(81, 40);
-			btn7.setLocation(11, 299);
+			btn7.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn7.setText("7");
+			btn7.setSize(100, 100);
+			btn7.setLocation(130, 422);
 			//btn7.setText("7");
 
 		}
@@ -131,8 +136,10 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn8() {
 		if(btn8 == null) {
 			btn8 = new JButton();
-			btn8.setSize(81, 40);
-			btn8.setLocation(102, 299);
+			btn8.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn8.setText("8");
+			btn8.setSize(100, 100);
+			btn8.setLocation(240, 422);
 			//btn8.setText("8");
 
 		}
@@ -143,39 +150,30 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn9() {
 		if(btn9 == null) {
 			btn9 = new JButton();
-			btn9.setSize(81, 40);
-			btn9.setLocation(193, 299);
+			btn9.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btn9.setText("9");
+			btn9.setSize(100, 100);
+			btn9.setLocation(350, 422);
 			//btn9.setText("9");
 
 		}
 		return btn9;
 	}
 	
-	public JTextField getTextFielJogador1() {
-		if(jogador1 == null) {
-			jogador1 = new JTextField();
-			jogador1.setSize(200, 40);
-			jogador1.setLocation(40, 43);
+	public JLabel getLblVez() {
+		if (lblVez == null) {
+			lblVez = new JLabel("Vez do Jogador 1 (X)");
+			lblVez.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblVez.setBounds(130, 133, 237, 25);
 		}
-		
-		return jogador1;
+		return lblVez;
 	}
-	
-	public JTextField getTextFielJogador2() {
-		if(jogador2 == null) {
-			jogador2 = new JTextField();
-			jogador2.setSize(200, 40);
-			jogador2.setLocation(40, 119);
+	public JLabel getLblResultado() {
+		if (lblResultado == null) {
+			lblResultado = new JLabel("");
+			lblResultado.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblResultado.setBounds(130, 532, 109, 25);
 		}
-		
-		return jogador2;
+		return lblResultado;
 	}
-	
-	 public String getNomeJogador1() {
-	        return jogador1.getText();
-	    }
-
-	 public String getNomeJogador2() {
-	        return jogador2.getText();
-	    }
 }
