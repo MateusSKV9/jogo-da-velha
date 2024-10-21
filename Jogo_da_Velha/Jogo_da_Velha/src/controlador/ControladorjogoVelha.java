@@ -9,6 +9,8 @@ public class ControladorjogoVelha implements ActionListener {
     PaneljogoVelha paneljogoVelha;
     private boolean isJogador1Turno = true; // Controla quem está jogando
     private char[] jogadas = new char[9]; 
+    private int contVez = 0;
+    private boolean empate = false;
 
     public ControladorjogoVelha(PaneljogoVelha paneljogoVelha) {
         this.paneljogoVelha = paneljogoVelha;
@@ -82,6 +84,7 @@ public class ControladorjogoVelha implements ActionListener {
         }
         btnClicado.setEnabled(false);
         isJogador1Turno = !isJogador1Turno;
+        contVez++;
         
         // Verificando condições de vitória
         verificarVitoria();
@@ -89,30 +92,24 @@ public class ControladorjogoVelha implements ActionListener {
     
     /* =====================================> FUNÇÕES <===================================== */
    
-    private void verificarVitoria() {
+    private void verificarVitoria() {   	
         if (jogadas[0] != '\0' && jogadas[0] == jogadas[1] && jogadas[1] == jogadas[2]) {
-        	paneljogoVelha.getLblResultado().setText("Vitória!");
 			finalizarJogo();
         } else if (jogadas[3] != '\0' && jogadas[3] == jogadas[4] && jogadas[4] == jogadas[5]) {
-            paneljogoVelha.getLblResultado().setText("Vitória!");
 			finalizarJogo();
         } else if (jogadas[6] != '\0' && jogadas[6] == jogadas[7] && jogadas[7] == jogadas[8]) {
-            paneljogoVelha.getLblResultado().setText("Vitória!");
 			finalizarJogo();
-        } else if (jogadas[0] != '\0' && jogadas[0] == jogadas[3] && jogadas[3] == jogadas[6]) {
-        	paneljogoVelha.getLblResultado().setText("Vitória!");
-			finalizarJogo();
+        } else if (jogadas[0] != '\0' && jogadas[0] == jogadas[3] && jogadas[3] == jogadas[6]) {        	finalizarJogo();
         } else if (jogadas[1] != '\0' && jogadas[1] == jogadas[4] && jogadas[4] == jogadas[7]) {
-        	paneljogoVelha.getLblResultado().setText("Vitória!");
 			finalizarJogo();
         } else if (jogadas[2] != '\0' && jogadas[2] == jogadas[5] && jogadas[5] == jogadas[8]) {
-        	paneljogoVelha.getLblResultado().setText("Vitória!");
 			finalizarJogo();
         } else if (jogadas[0] != '\0' && jogadas[0] == jogadas[4] && jogadas[4] == jogadas[8]) {
-        	paneljogoVelha.getLblResultado().setText("Vitória!");
 			finalizarJogo();
         } else if (jogadas[2] != '\0' && jogadas[2] == jogadas[4] && jogadas[4] == jogadas[6]) {
-            paneljogoVelha.getLblResultado().setText("Vitória!");
+			finalizarJogo();
+        } else if(contVez==9) {
+        	empate=true;
 			finalizarJogo();
         }
     }
@@ -127,5 +124,17 @@ public class ControladorjogoVelha implements ActionListener {
     	paneljogoVelha.getBtn7().setEnabled(false);
     	paneljogoVelha.getBtn8().setEnabled(false);
     	paneljogoVelha.getBtn9().setEnabled(false);
+
+    	paneljogoVelha.getLblVez().setText("FIM DE JOGO!");
+
+    	if(!empate) {
+    		if(contVez%2!=0) {
+    			paneljogoVelha.getLblResultado().setText("Vitória! Jogador 1 ganhou.");
+    		} else {
+    			paneljogoVelha.getLblResultado().setText("Vitória! Jogador 2 ganhou.");
+    		}    		
+    	} else {
+    		paneljogoVelha.getLblResultado().setText("Empate. Deu velha!");
+    	} 	
     }
 }

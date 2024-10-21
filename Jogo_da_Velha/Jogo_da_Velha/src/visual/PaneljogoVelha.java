@@ -174,15 +174,15 @@ public class PaneljogoVelha extends JPanel {
 		if (lblVez == null) {
 			lblVez = new JLabel("Vez do Jogador 1 (X)");
 			lblVez.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblVez.setBounds(158, 30, 269, 25);
+			lblVez.setBounds(70, 38, 347, 25);
 		}
 		return lblVez;
 	}
 	public JLabel getLblResultado() {
 		if (lblResultado == null) {
-			lblResultado = new JLabel("Resultado");
+			lblResultado = new JLabel("Resultado:");
 			lblResultado.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblResultado.setBounds(70, 464, 94, 25);
+			lblResultado.setBounds(70, 464, 347, 25);
 		}
 		return lblResultado;
 	}
