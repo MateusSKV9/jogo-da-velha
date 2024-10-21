@@ -2,6 +2,8 @@ package visual;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PaneljogoVelha extends JPanel {
 	JButton btn1;
@@ -20,7 +22,7 @@ public class PaneljogoVelha extends JPanel {
 	
 	public PaneljogoVelha() {
 		this.setLayout(null);
-		this.setSize(620, 600);
+		this.setSize(500, 510);
 		
 		this.add(getBtn1());
 		this.add(getBtn2());
@@ -38,10 +40,14 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn1() {
 		if(btn1 == null) {
 			btn1 = new JButton();
+			btn1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btn1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn1.setText("1");
-			btn1.setSize(100, 100);
-			btn1.setLocation(130, 202);
+			btn1.setSize(109, 109);
+			btn1.setLocation(70, 93);
 			//btn1.setText("1");
 
 		}
@@ -52,10 +58,14 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn2() {
 		if(btn2 == null) {
 			btn2 = new JButton();
+			btn2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btn2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn2.setText("2");
-			btn2.setSize(100, 100);
-			btn2.setLocation(240, 202);
+			btn2.setSize(109, 109);
+			btn2.setLocation(189, 93);
 			//btn2.setText("2");
 
 		}
@@ -68,8 +78,8 @@ public class PaneljogoVelha extends JPanel {
 			btn3 = new JButton();
 			btn3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn3.setText("3");
-			btn3.setSize(100, 100);
-			btn3.setLocation(350, 202);
+			btn3.setSize(109, 109);
+			btn3.setLocation(308, 93);
 			//btn3.setText("3");
 
 		}
@@ -83,8 +93,8 @@ public class PaneljogoVelha extends JPanel {
 			btn4 = new JButton();
 			btn4.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn4.setText("4");
-			btn4.setSize(100, 100);
-			btn4.setLocation(130, 312);
+			btn4.setSize(109, 109);
+			btn4.setLocation(70, 212);
 			//btn4.setText("4");
 
 		}
@@ -97,8 +107,8 @@ public class PaneljogoVelha extends JPanel {
 			btn5 = new JButton();
 			btn5.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn5.setText("5");
-			btn5.setSize(100, 100);
-			btn5.setLocation(240, 312);
+			btn5.setSize(109, 109);
+			btn5.setLocation(189, 212);
 			//btn5.setText("5");
 
 		}
@@ -111,8 +121,8 @@ public class PaneljogoVelha extends JPanel {
 			btn6 = new JButton();
 			btn6.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn6.setText("6");
-			btn6.setSize(100, 100);
-			btn6.setLocation(350, 312);
+			btn6.setSize(109, 109);
+			btn6.setLocation(308, 212);
 			//btn6.setText("6");
 
 		}
@@ -125,8 +135,8 @@ public class PaneljogoVelha extends JPanel {
 			btn7 = new JButton();
 			btn7.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn7.setText("7");
-			btn7.setSize(100, 100);
-			btn7.setLocation(130, 422);
+			btn7.setSize(109, 109);
+			btn7.setLocation(70, 331);
 			//btn7.setText("7");
 
 		}
@@ -138,8 +148,8 @@ public class PaneljogoVelha extends JPanel {
 			btn8 = new JButton();
 			btn8.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn8.setText("8");
-			btn8.setSize(100, 100);
-			btn8.setLocation(240, 422);
+			btn8.setSize(109, 109);
+			btn8.setLocation(189, 331);
 			//btn8.setText("8");
 
 		}
@@ -152,8 +162,8 @@ public class PaneljogoVelha extends JPanel {
 			btn9 = new JButton();
 			btn9.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn9.setText("9");
-			btn9.setSize(100, 100);
-			btn9.setLocation(350, 422);
+			btn9.setSize(109, 109);
+			btn9.setLocation(308, 331);
 			//btn9.setText("9");
 
 		}
@@ -164,15 +174,15 @@ public class PaneljogoVelha extends JPanel {
 		if (lblVez == null) {
 			lblVez = new JLabel("Vez do Jogador 1 (X)");
 			lblVez.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblVez.setBounds(130, 133, 237, 25);
+			lblVez.setBounds(158, 30, 269, 25);
 		}
 		return lblVez;
 	}
 	public JLabel getLblResultado() {
 		if (lblResultado == null) {
-			lblResultado = new JLabel("");
+			lblResultado = new JLabel("Resultado");
 			lblResultado.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblResultado.setBounds(130, 532, 109, 25);
+			lblResultado.setBounds(70, 464, 94, 25);
 		}
 		return lblResultado;
 	}
