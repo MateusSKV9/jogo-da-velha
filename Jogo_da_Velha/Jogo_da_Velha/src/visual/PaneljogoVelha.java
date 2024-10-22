@@ -48,8 +48,6 @@ public class PaneljogoVelha extends JPanel {
 			btn1.setText("1");
 			btn1.setSize(109, 109);
 			btn1.setLocation(70, 93);
-			//btn1.setText("1");
-
 		}
 		return btn1;
 	}
@@ -66,8 +64,6 @@ public class PaneljogoVelha extends JPanel {
 			btn2.setText("2");
 			btn2.setSize(109, 109);
 			btn2.setLocation(189, 93);
-			//btn2.setText("2");
-
 		}
 		return btn2;
 	}
@@ -80,8 +76,6 @@ public class PaneljogoVelha extends JPanel {
 			btn3.setText("3");
 			btn3.setSize(109, 109);
 			btn3.setLocation(308, 93);
-			//btn3.setText("3");
-
 		}
 		
 		return btn3;
@@ -95,8 +89,6 @@ public class PaneljogoVelha extends JPanel {
 			btn4.setText("4");
 			btn4.setSize(109, 109);
 			btn4.setLocation(70, 212);
-			//btn4.setText("4");
-
 		}
 		
 		return btn4;
@@ -109,8 +101,6 @@ public class PaneljogoVelha extends JPanel {
 			btn5.setText("5");
 			btn5.setSize(109, 109);
 			btn5.setLocation(189, 212);
-			//btn5.setText("5");
-
 		}
 		return btn5;
 	}
@@ -123,8 +113,6 @@ public class PaneljogoVelha extends JPanel {
 			btn6.setText("6");
 			btn6.setSize(109, 109);
 			btn6.setLocation(308, 212);
-			//btn6.setText("6");
-
 		}
 		return btn6;
 	}
@@ -137,8 +125,6 @@ public class PaneljogoVelha extends JPanel {
 			btn7.setText("7");
 			btn7.setSize(109, 109);
 			btn7.setLocation(70, 331);
-			//btn7.setText("7");
-
 		}
 		return btn7;
 	}
@@ -150,8 +136,6 @@ public class PaneljogoVelha extends JPanel {
 			btn8.setText("8");
 			btn8.setSize(109, 109);
 			btn8.setLocation(189, 331);
-			//btn8.setText("8");
-
 		}
 		return btn8;
 	}
@@ -164,8 +148,6 @@ public class PaneljogoVelha extends JPanel {
 			btn9.setText("9");
 			btn9.setSize(109, 109);
 			btn9.setLocation(308, 331);
-			//btn9.setText("9");
-
 		}
 		return btn9;
 	}

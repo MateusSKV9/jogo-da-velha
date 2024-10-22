@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton; 
@@ -7,126 +8,142 @@ import visual.PaneljogoVelha;
 
 public class ControladorjogoVelha implements ActionListener {
     PaneljogoVelha paneljogoVelha;
+    private JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     private boolean isJogador1Turno = true; // Controla quem está jogando
-    private char[] jogadas = new char[9]; 
-    private int contVez = 0;
     private boolean empate = false;
+    private int contVez = 0;
 
     public ControladorjogoVelha(PaneljogoVelha paneljogoVelha) {
         this.paneljogoVelha = paneljogoVelha;
+        
+        this.btn1 = paneljogoVelha.getBtn1();
+        this.btn2 = paneljogoVelha.getBtn2();
+        this.btn3 = paneljogoVelha.getBtn3();
+        this.btn4 = paneljogoVelha.getBtn4();
+        this.btn5 = paneljogoVelha.getBtn5();
+        this.btn6 = paneljogoVelha.getBtn6();
+        this.btn7 = paneljogoVelha.getBtn7();
+        this.btn8 = paneljogoVelha.getBtn8();
+        this.btn9 = paneljogoVelha.getBtn9();
+
         addEventos();
     }
 
     private void addEventos() {
-        paneljogoVelha.getBtn1().addActionListener(this);
-        paneljogoVelha.getBtn2().addActionListener(this);
-        paneljogoVelha.getBtn3().addActionListener(this);
-        paneljogoVelha.getBtn4().addActionListener(this);
-        paneljogoVelha.getBtn5().addActionListener(this);
-        paneljogoVelha.getBtn6().addActionListener(this);
-        paneljogoVelha.getBtn7().addActionListener(this);
-        paneljogoVelha.getBtn8().addActionListener(this);
-        paneljogoVelha.getBtn9().addActionListener(this);
+        btn1.addActionListener(this);
+        btn2.addActionListener(this);
+        btn3.addActionListener(this);
+        btn4.addActionListener(this);
+        btn5.addActionListener(this);
+        btn6.addActionListener(this);
+        btn7.addActionListener(this);
+        btn8.addActionListener(this);
+        btn9.addActionListener(this);
         paneljogoVelha.getLblResultado();
         paneljogoVelha.getLblVez();
     }
     
-    /* =====================================> EVENTOS <===================================== */
+    
+    /* ===============================> EVENTOS (LÓGICA DO JOGO) <=============================== */
+    
     
     public void actionPerformed(ActionEvent e) {
         JButton btnClicado = (JButton) e.getSource(); // armazena o botão que foi acionado 
-       
+        
         if (isJogador1Turno) {
-        	paneljogoVelha.getLblVez().setText("Vez do jogador 2 (O).");
+        	paneljogoVelha.getLblVez().setText("Vez do jogador 2 (O)."); // após clicar, muda para jogador 2
             btnClicado.setText("X"); // Jogador 1
-            
-            if (btnClicado == paneljogoVelha.getBtn1()) {
-                jogadas[0] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn2()) {
-                jogadas[1] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn3()) {
-                jogadas[2] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn4()) {
-                jogadas[3] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn5()) {
-                jogadas[4] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn6()) {
-                jogadas[5] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn7()) {
-                jogadas[6] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn8()) {
-                jogadas[7] = 'X';
-            } else if (btnClicado == paneljogoVelha.getBtn9()) {
-                jogadas[8] = 'X';
-            }   
+            jogada(btnClicado, "X");       
         } else {
-        	paneljogoVelha.getLblVez().setText("Vez do jogador 1 (X).");
-            if (btnClicado == paneljogoVelha.getBtn1()) {
-                jogadas[0] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn2()) {
-                jogadas[1] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn3()) {
-                jogadas[2] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn4()) {
-                jogadas[3] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn5()) {
-                jogadas[4] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn6()) {
-                jogadas[5] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn7()) {
-                jogadas[6] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn8()) {
-                jogadas[7] = 'O';
-            } else if (btnClicado == paneljogoVelha.getBtn9()) {
-                jogadas[8] = 'O';
-            }
-            btnClicado.setText("O"); // Jogador 2
+        	paneljogoVelha.getLblVez().setText("Vez do jogador 1 (X)."); // após clicar, muda para jogador 1
+        	btnClicado.setText("O"); // Jogador 2
+        	jogada(btnClicado, "O");
         }
+        
         btnClicado.setEnabled(false);
         isJogador1Turno = !isJogador1Turno;
         contVez++;
         
-        // Verificando condições de vitória
-        verificarVitoria();
+        verificarVitoria(); // Verifica condições de vitória
     }
     
+    
     /* =====================================> FUNÇÕES <===================================== */
-   
-    private void verificarVitoria() {   	
-        if (jogadas[0] != '\0' && jogadas[0] == jogadas[1] && jogadas[1] == jogadas[2]) {
-			finalizarJogo();
-        } else if (jogadas[3] != '\0' && jogadas[3] == jogadas[4] && jogadas[4] == jogadas[5]) {
-			finalizarJogo();
-        } else if (jogadas[6] != '\0' && jogadas[6] == jogadas[7] && jogadas[7] == jogadas[8]) {
-			finalizarJogo();
-        } else if (jogadas[0] != '\0' && jogadas[0] == jogadas[3] && jogadas[3] == jogadas[6]) {        	finalizarJogo();
-        } else if (jogadas[1] != '\0' && jogadas[1] == jogadas[4] && jogadas[4] == jogadas[7]) {
-			finalizarJogo();
-        } else if (jogadas[2] != '\0' && jogadas[2] == jogadas[5] && jogadas[5] == jogadas[8]) {
-			finalizarJogo();
-        } else if (jogadas[0] != '\0' && jogadas[0] == jogadas[4] && jogadas[4] == jogadas[8]) {
-			finalizarJogo();
-        } else if (jogadas[2] != '\0' && jogadas[2] == jogadas[4] && jogadas[4] == jogadas[6]) {
-			finalizarJogo();
+    
+    
+    private void jogada(JButton btnClicado, String simbolo) {
+    	if (btnClicado == btn1) {
+    		btn1.setText(simbolo);
+        } else if (btnClicado == btn2) {
+        	btn2.setText(simbolo);
+        } else if (btnClicado == btn3) {
+        	btn3.setText(simbolo);
+        } else if (btnClicado == btn4) {
+        	btn4.setText(simbolo);
+        } else if (btnClicado == btn5) {
+        	btn5.setText(simbolo);
+        } else if (btnClicado == btn6) {
+        	btn6.setText(simbolo);
+        } else if (btnClicado == btn7) {
+        	btn7.setText(simbolo);
+        } else if (btnClicado == btn8) {
+        	btn8.setText(simbolo);
+        } else if (btnClicado == btn9) {
+        	btn9.setText(simbolo);
+        }
+    }
+    
+    private void verificarVitoria() {  
+        if (btn1.getText() != "\0" &&
+        	btn1.getText() == btn2.getText() && btn2.getText() == btn3.getText()) { 
+        	pintarVitoria(btn1, btn2, btn3);
+        	finalizarJogo();
+        } else if (btn4.getText() != "\0" &&
+        	btn4.getText() == btn5.getText() && btn5.getText() == btn6.getText()) { 
+        	pintarVitoria(btn4, btn5, btn6);
+        	finalizarJogo();
+        } else if (btn7.getText() != "\0" &&
+        	btn7.getText() == btn8.getText() && btn8.getText() == btn9.getText()) {	
+        	pintarVitoria(btn7, btn8, btn9);
+        	finalizarJogo();
+        } else if (btn1.getText() != "\0" &&
+        	btn1.getText() == btn4.getText() && btn4.getText() == btn7.getText()) { 
+        	pintarVitoria(btn1, btn4, btn7);
+        	finalizarJogo();
+        } else if (btn2.getText() != "\0" &&
+        	btn2.getText() == btn5.getText() && btn5.getText() == btn8.getText()) { 
+        	pintarVitoria(btn2, btn5, btn8);
+        	finalizarJogo();
+        } else if (btn3.getText() != "\0" &&
+        	btn3.getText() == btn6.getText() && btn6.getText() == btn9.getText()) { 
+        	pintarVitoria(btn3, btn6, btn9);
+        	finalizarJogo();
+        } else if (btn1.getText() != "\0" &&
+        	btn1.getText() == btn5.getText() && btn5.getText() == btn9.getText()) { 
+        	pintarVitoria(btn1, btn5, btn9);
+        	finalizarJogo();
+        } else if (btn3.getText() != "\0" &&
+        	btn3.getText() == btn5.getText() && btn5.getText() == btn7.getText()) { 
+        	pintarVitoria(btn3, btn5, btn7);
+        	finalizarJogo();
         } else if(contVez==9) {
         	empate=true;
-			finalizarJogo();
+       		finalizarJogo();
         }
     }
     
     private void finalizarJogo() {
-    	paneljogoVelha.getBtn1().setEnabled(false);
-    	paneljogoVelha.getBtn2().setEnabled(false);
-    	paneljogoVelha.getBtn3().setEnabled(false);
-    	paneljogoVelha.getBtn4().setEnabled(false);
-    	paneljogoVelha.getBtn5().setEnabled(false);
-    	paneljogoVelha.getBtn6().setEnabled(false);
-    	paneljogoVelha.getBtn7().setEnabled(false);
-    	paneljogoVelha.getBtn8().setEnabled(false);
-    	paneljogoVelha.getBtn9().setEnabled(false);
+    	btn1.setEnabled(false);
+    	btn2.setEnabled(false);
+    	btn3.setEnabled(false);
+    	btn4.setEnabled(false);
+    	btn5.setEnabled(false);
+    	btn6.setEnabled(false);
+    	btn7.setEnabled(false);
+    	btn8.setEnabled(false);
+    	btn9.setEnabled(false);
 
     	paneljogoVelha.getLblVez().setText("FIM DE JOGO!");
-
     	if(!empate) {
     		if(contVez%2!=0) {
     			paneljogoVelha.getLblResultado().setText("Vitória! Jogador 1 ganhou.");
@@ -136,5 +153,11 @@ public class ControladorjogoVelha implements ActionListener {
     	} else {
     		paneljogoVelha.getLblResultado().setText("Empate. Deu velha!");
     	} 	
+    }
+    
+    private void pintarVitoria(JButton btnA, JButton btnB, JButton btnC) {
+    	btnA.setBackground(Color.GREEN); 
+    	btnB.setBackground(Color.GREEN); 
+    	btnC.setBackground(Color.GREEN); 
     }
 }
