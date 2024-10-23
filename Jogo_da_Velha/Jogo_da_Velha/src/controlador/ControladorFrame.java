@@ -14,8 +14,9 @@ public class ControladorFrame implements ActionListener {
 	public ControladorFrame() {
 		frame = new Frame();
 		home = new Home();
-	    frame.setContentPane(home);
 	    controladorHome = new ControladorHome(home, frame);
+	    frame.setContentPane(home);
+	    
 	    frame.revalidate();
 		frame.repaint();
 		addEventos();

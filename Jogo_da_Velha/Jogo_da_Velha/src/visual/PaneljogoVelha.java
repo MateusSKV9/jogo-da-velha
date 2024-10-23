@@ -19,7 +19,6 @@ public class PaneljogoVelha extends JPanel {
 	private JLabel lblVez;
 	private JLabel lblResultado;
 	
-	
 	public PaneljogoVelha() {
 		this.setLayout(null);
 		this.setSize(500, 510);

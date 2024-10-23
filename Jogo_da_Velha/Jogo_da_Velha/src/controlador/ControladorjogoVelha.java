@@ -15,7 +15,6 @@ public class ControladorjogoVelha implements ActionListener {
 
     public ControladorjogoVelha(PaneljogoVelha paneljogoVelha) {
         this.paneljogoVelha = paneljogoVelha;
-        
         this.btn1 = paneljogoVelha.getBtn1();
         this.btn2 = paneljogoVelha.getBtn2();
         this.btn3 = paneljogoVelha.getBtn3();
