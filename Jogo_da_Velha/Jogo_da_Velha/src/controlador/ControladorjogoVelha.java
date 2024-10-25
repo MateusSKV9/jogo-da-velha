@@ -8,13 +8,14 @@ import visual.PaneljogoVelha;
 
 public class ControladorjogoVelha implements ActionListener {
     PaneljogoVelha paneljogoVelha;
-    private JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    private JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnJogarNovamente;
     private boolean isJogador1Turno = true; // Controla quem está jogando
     private boolean empate = false;
     private int contVez = 0;
 
     public ControladorjogoVelha(PaneljogoVelha paneljogoVelha) {
         this.paneljogoVelha = paneljogoVelha;
+        
         this.btn1 = paneljogoVelha.getBtn1();
         this.btn2 = paneljogoVelha.getBtn2();
         this.btn3 = paneljogoVelha.getBtn3();
@@ -24,6 +25,7 @@ public class ControladorjogoVelha implements ActionListener {
         this.btn7 = paneljogoVelha.getBtn7();
         this.btn8 = paneljogoVelha.getBtn8();
         this.btn9 = paneljogoVelha.getBtn9();
+        this.btnJogarNovamente = paneljogoVelha.getBtnJogarNovamente();
 
         addEventos();
     }
@@ -38,6 +40,7 @@ public class ControladorjogoVelha implements ActionListener {
         btn7.addActionListener(this);
         btn8.addActionListener(this);
         btn9.addActionListener(this);
+        btnJogarNovamente.addActionListener(this);
         paneljogoVelha.getLblResultado();
         paneljogoVelha.getLblVez();
     }
@@ -53,10 +56,15 @@ public class ControladorjogoVelha implements ActionListener {
         	paneljogoVelha.getLblVez().setText("Vez do jogador 2 (O)."); // após clicar, muda para jogador 2
             btnClicado.setText("X"); // Jogador 1
             jogada(btnClicado, "X");       
-        } else {
+        } else  {
         	paneljogoVelha.getLblVez().setText("Vez do jogador 1 (X)."); // após clicar, muda para jogador 1
         	btnClicado.setText("O"); // Jogador 2
         	jogada(btnClicado, "O");
+        }
+        
+        if(e.getSource() == paneljogoVelha.getBtnJogarNovamente()) {
+        	jogarNovamente();
+        	return; 
         }
         
         btnClicado.setEnabled(false);
@@ -151,7 +159,9 @@ public class ControladorjogoVelha implements ActionListener {
     		}    		
     	} else {
     		paneljogoVelha.getLblResultado().setText("Empate. Deu velha!");
-    	} 	
+    	}
+    	
+    	paneljogoVelha.getBtnJogarNovamente().setVisible(true);
     }
     
     private void pintarVitoria(JButton btnA, JButton btnB, JButton btnC) {
@@ -159,4 +169,29 @@ public class ControladorjogoVelha implements ActionListener {
     	btnB.setBackground(Color.GREEN); 
     	btnC.setBackground(Color.GREEN); 
     }
+    
+    private void jogarNovamente() {
+        btn1.setText("1"); btn1.setBackground(null); btn1.setEnabled(true);
+        btn2.setText("2"); btn2.setBackground(null); btn2.setEnabled(true);
+        btn3.setText("3"); btn3.setBackground(null); btn3.setEnabled(true);
+        btn4.setText("4"); btn4.setBackground(null); btn4.setEnabled(true);
+        btn5.setText("5"); btn5.setBackground(null); btn5.setEnabled(true);
+        btn6.setText("6"); btn6.setBackground(null); btn6.setEnabled(true);
+        btn7.setText("7"); btn7.setBackground(null); btn7.setEnabled(true);
+        btn8.setText("8"); btn8.setBackground(null); btn8.setEnabled(true);
+        btn9.setText("9"); btn9.setBackground(null); btn9.setEnabled(true);
+
+        isJogador1Turno = true;
+        empate = false;
+        contVez = 0;
+
+        
+        paneljogoVelha.getBtnJogarNovamente().setText("Jogar Novamente");
+        paneljogoVelha.getLblResultado().setText("");
+    	paneljogoVelha.getBtnJogarNovamente().setVisible(false);
+
+    }
+    
+    
+
 }

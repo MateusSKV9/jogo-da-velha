@@ -15,13 +15,14 @@ public class PaneljogoVelha extends JPanel {
 	JButton btn7;
 	JButton btn8;
 	JButton btn9;
+	JButton btnJogarNovamente; 
 	JLabel jogadorAtual;
 	private JLabel lblVez;
 	private JLabel lblResultado;
 	
 	public PaneljogoVelha() {
 		this.setLayout(null);
-		this.setSize(500, 510);
+		this.setSize(500, 600);
 		
 		this.add(getBtn1());
 		this.add(getBtn2());
@@ -32,6 +33,7 @@ public class PaneljogoVelha extends JPanel {
 		this.add(getBtn7());
 		this.add(getBtn8());
 		this.add(getBtn9());
+		this.add(getBtnJogarNovamente());
 		add(getLblVez());
 		add(getLblResultado());
 	}
@@ -143,12 +145,28 @@ public class PaneljogoVelha extends JPanel {
 	public JButton getBtn9() {
 		if(btn9 == null) {
 			btn9 = new JButton();
+			btn9.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btn9.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			btn9.setText("9");
 			btn9.setSize(109, 109);
 			btn9.setLocation(308, 331);
 		}
 		return btn9;
+	}
+	
+	public JButton getBtnJogarNovamente() {
+		if(btnJogarNovamente == null) {
+			btnJogarNovamente = new JButton();
+			btnJogarNovamente.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btnJogarNovamente.setText("Jogar Novamente!");
+			btnJogarNovamente.setSize(225, 54);
+			btnJogarNovamente.setLocation(143, 524);
+			btnJogarNovamente.setVisible(false);
+		}
+		return btnJogarNovamente;
 	}
 	
 	public JLabel getLblVez() {
