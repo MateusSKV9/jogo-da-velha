@@ -184,14 +184,9 @@ public class ControladorjogoVelha implements ActionListener {
         isJogador1Turno = true;
         empate = false;
         contVez = 0;
-
-        
+      
         paneljogoVelha.getBtnJogarNovamente().setText("Jogar Novamente");
         paneljogoVelha.getLblResultado().setText("");
     	paneljogoVelha.getBtnJogarNovamente().setVisible(false);
-
-    }
-    
-    
-
+    }   
 }
