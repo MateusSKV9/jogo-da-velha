@@ -183,7 +183,7 @@ public class PaneljogoVelha extends JPanel {
 		if (lblResultado == null) {
 			lblResultado = new JLabel(" ");
 			lblResultado.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-			lblResultado.setBounds(76, 464, 347, 25);
+			lblResultado.setBounds(76, 464, 347, 33);
 		}
 		return lblResultado;
 	}
